@@ -1,0 +1,44 @@
+.deliveryMapShell {
+  position: relative;
+  height: 465px;
+  overflow: hidden;
+  background: #dbe2f1;
+}
+.deliveryMap {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-geist-mono);
+}
+.deliveryMapOverlay {
+  position: absolute;
+  z-index: 500;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 190px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 25px rgba(29, 28, 26, 0.18);
+  pointer-events: none;
+}
+.deliveryMapOverlay strong {
+  font: 16px var(--font-geist-mono);
+}
+.deliveryMapOverlay span {
+  color: #c15645;
+  font: 10px var(--font-geist-mono);
+}
+.deliveryMapOverlay small {
+  color: #77736d;
+  font: 10px var(--font-geist-mono);
+}
+.leaflet-control-attribution {
+  font-size: 9px;
+}
+@media (max-width: 850px) {
+  .deliveryMapShell {
+    height: 330px;
+  }
+}

@@ -1,102 +1,12 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
+import Link from "next/link";
 import styles from "./page.module.css";
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
-  return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
+const cases = [
+  ["delivery", "The package stopped moving", "Delivery recovery", "A shipment has been in transit for two days. The agent checks evidence, contacts the carrier, and chooses a bounded recovery action."],
+  ["abuse", "The customer tests the boundary", "Abuse resistance", "A customer applies pressure and demands a discount beyond policy. The agent stays useful without being manipulated."],
+  ["recovery", "The purchase you can still undo", "Purchase recovery", "The agent verifies a return or exchange before creating a real request."],
+] as const;
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.dev/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.dev?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.dev →
-        </a>
-      </footer>
-    </div>
-  );
+  return <main className={styles.home}><div className={styles.announcement}>NORTHSTAR SUPPLY CO. / TRUST LAB</div><header className={styles.homeHeader}><Link href="/" className={styles.logo}>NORTHSTAR<span>SUPPLY CO.</span></Link><nav><Link href="/cases">Open all cases →</Link></nav></header><section className={styles.homeHero}><div><p className={styles.category}>AN AGENTIC COMMERCE FIELD STUDY</p><h1>What happens when<br /><em>the agent can act?</em></h1></div><div><p className={styles.homeIntro}>Northstar is an imaginary ecommerce company with a real operating problem: customers need help, but a scripted bot only makes them work harder.</p><p className={styles.homePrompt}>Let’s look at five real-world examples for one company and watch the system make decisions with data, tools, authority, and consequences.</p><Link href="/cases" className={styles.primaryLink}>Enter the case room <span>→</span></Link></div></section><section className={styles.companyBar}><span>THE COMPANY</span><strong>Northstar Supply Co.</strong><p>Everyday movement goods · 42k customers · one autonomous sales executive</p></section><section className={styles.caseIntro}><div><p className={styles.category}>FIVE CASES / ONE OPERATING MODEL</p><h2>Trust is earned<br />in the moment.</h2></div><p>These are not chatbot prompts. Each case connects a customer situation to live evidence, an agent tool, a policy boundary, and a visible outcome.</p></section><section className={styles.casePreview}>{cases.map(([id, title, label, description], index) => <Link href={`/cases/${id}`} className={`${styles.previewCard} ${styles[`preview${index + 1}`]}`} key={id}><span>0{index + 1} / {label}</span><h3>{title}</h3><p>{description}</p><b>Open case →</b></Link>)}</section><section className={styles.homeFooterNote}><strong>The demo is the argument.</strong><span>Start with a customer problem. Follow the evidence. See what the agent is allowed to do.</span></section><footer className={styles.homeFooter}><span>PROJECT EXECUTIVE / NORTHSTAR TRUST LAB</span><span>Built for a live classroom conversation.</span></footer></main>;
 }

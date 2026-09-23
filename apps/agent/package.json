@@ -1,0 +1,26 @@
+{
+  "name": "agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/agent.ts",
+  "scripts": {
+    "dev": "adk web src/agent.ts --port 3001 --allow_origins http://localhost:3000",
+    "start": "adk api_server src/agent.ts --port ${PORT:-8000} --allow_origins *",
+    "run": "adk run src/agent.ts",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/adk": "^0.2.0",
+    "@supabase/supabase-js": "^2.57.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@google/adk-devtools": "^0.2.0",
+    "@repo/typescript-config": "*",
+    "dotenv-cli": "^11.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
