@@ -1,3 +1,21 @@
+export const userProfiles = [
+  {
+    id: "high-value-customer",
+    name: "VIP Member",
+    description: "High LTV, High Churn Risk. Should receive maximum leniency and proactive offers.",
+  },
+  {
+    id: "new-user",
+    name: "New Account",
+    description: "Low LTV, Medium Risk. Standard policies apply strictly.",
+  },
+  {
+    id: "case-study-student",
+    name: "Standard User",
+    description: "Base level telemetry fallback.",
+  }
+] as const;
+
 export const caseSummaries = [
   {
     id: "delivery",
@@ -21,3 +39,4 @@ export const caseSummaries = [
 ] as const;
 
 export type CaseSummary = (typeof caseSummaries)[number];
+export type UserProfile = (typeof userProfiles)[number];
